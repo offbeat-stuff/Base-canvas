@@ -8,7 +8,7 @@ joy=function(x,y,r){
 }
 joy.prototype={
 	"show":function(){
-		ctx.fillStyle="#2226"
+		ctx.fillStyle="#8886"
 		circle(this.pos,this.r)
 		ctx.fillStyle="#000"
 		circle(this.spos.add(this.pos),this.sr)
