@@ -7,8 +7,8 @@ game={
 		if(joys[0].pressed){
 			this.vel=this.vel.add(joys[0].value.mult(0.1))
 		}
-		this.pos.x=Math.min(Math.max(0,this.pos.x),width)
-		this.pos.y=Math.min(Math.max(0,this.pos.y),height)
+		this.pos.x=this.pos.x-(width*Math.floor(this.pos.x/width))
+		this.pos.y=this.pos.y-(height*Math.floor(this.pos.y/height))
 	},
 	"show":function(){
 		stroke("#fff")
