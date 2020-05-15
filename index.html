@@ -7,23 +7,23 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="canvas.js"></script>
+		<script src="vec2.js"></script>
 		<link rel="stylesheet" href="style.css" >
 	</head>
 	<body onload="loadEruda()">
 		<script type="text/javascript">
 			var elem = document.documentElement ;
 			function init(){
-				document.addEventListener("fullscreenerror" , function (event) {
-				// an error occurred
-				console.log(event)
-				});
-				console.log(document.fullscreenEnabled);
-				loadScript("index.js")
+				var scripts=["joy.js","draw.js","index.js"]
+				var loadFun = function(){
+					scripts=scripts.slice(1)
+					if(scripts[0]){
+						createScript(scripts[0],loadFun)
+					}
+				}
+				createScript(scripts[0],loadFun)
 				elem.addEventListener("dblclick",function(e){
 						openFullscreen()
-				})
-				document.addEventListener("fullscreenchange",function(e){
-					console.log(e)
 				})
 			}
 			
@@ -61,9 +61,10 @@
 				init()
 				};
 			}
-			function loadScript(src){
+			function createScript(src,onload){
 				var _script=document.createElement("script")
 				_script.src=src
+				_script.onload=onload
 				document.body.appendChild(_script)
 			}
 		</script>

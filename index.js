@@ -1,29 +1,32 @@
 cvs = document.createElement("canvas");
 width = cvs.width = window.innerWidth;
 height = cvs.height = window.innerHeight;
-var pressed=0;
+var joys=[];
+joys.push(new joy(width*0.15,height*0.7,50))
+joys.push(new joy(width*0.8,height*0.7,50))
 window.onresize=function(e){
 	width = cvs.width = window.innerWidth;
 	height = cvs.height = window.innerHeight;
+	joys[0].pos=new vec2(width*0.15,height*0.7)
+	joys[1].pos=new vec2(width*0.8,height*0.7)
 }
-cvs.addEventListener("ontouchstart",function(e){
-	pressed=1;
-},false)
-cvs.addEventListener("touchmove",function(e){
-
-},false)
 ctx = cvs.getContext("2d");
+
+function handleJoystick(e){
+	var touches=[]
+	for(let i=0;i<e.touches.length;i++){
+	touches.push(new vec2(e.touches[i].clientX,e.touches[i].clientY))
+	}
+	console.log(touches)
+	joys.forEach(x=>{
+		x.move(touches)
+	})
+}
+cvs.addEventListener("touchstart",handleJoystick,false)
+
+cvs.addEventListener("touchmove",handleJoystick,false)
+
+cvs.addEventListener("touchend",handleJoystick,false)
+
 document.body.appendChild(cvs);
-console.log(cvs)
-console.log(ctx)
-console.log([width,height])
-ctx.fillStyle="#000"
-rect(0,0,width,height);
-function draw(){
-for(var i=0;i<3;i++){
-	ctx.fillStyle="#f"+Math.floor(i*4)+"f"
-	rect(0,i*height/3.0,width,(i+1)*height/3.0)
-}
-requestAnimationFrame(draw)
-}
 draw();
