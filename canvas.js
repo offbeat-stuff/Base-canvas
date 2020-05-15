@@ -1,3 +1,28 @@
+function fill(f){
+	ctx.fillStyle=f
+}
+
+function stroke(s){
+	ctx.strokeStyle=s
+}
+
+function line(a,b){
+	ctx.beginPath()
+		ctx.moveTo(a.x,a.y)
+		ctx.lineTo(b.x,b.y)
+	ctx.stroke()
+}
+
+function fillPath(p){
+	ctx.beginPath()
+	ctx.moveTo(p[0].x,p[0].y)
+	for(let i=1;i<p.length;i++){
+		ctx.lineTo(p[i].x,p[i].y)
+	}
+	ctx.closePath()
+	ctx.stroke()
+}
+
 function rect(ax,ay,bx,by){
 	ctx.fillRect(ax,ay,bx,by);
 }

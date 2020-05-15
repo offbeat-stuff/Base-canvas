@@ -4,6 +4,7 @@ joy=function(x,y,r){
 	this.r = r
 	this.sr = r/3
 	this.value=new vec2()
+	this.pressed=false;
 }
 joy.prototype={
 	"show":function(){
@@ -24,17 +25,20 @@ joy.prototype={
 			}
 			p++
 		})
-		console.log(moves,win,near)
-		if(win!= -1&&near<this.r+this.sr){
+		if(win!= -1&&near<this.r*2){
 		this.spos=moves[win].add(this.pos.neg())
+		this.pressed=true;
 		if(this.spos.mag()>this.r-this.sr){
 			this.spos=this.spos.norm().mult(this.r-this.sr)
 		}
+		this.value=this.spos.mult(1/(this.r-this.sr))
 		}else{
 			this.leave()
 		}
 	},
 	"leave":function(){
 		this.spos=new vec2()
+		this.pressed=false;
+		this.value=new vec2()
 	}
 }

@@ -18,5 +18,13 @@ vec2.prototype={
 	},
 	"norm":function(){
 		return this.mult(1/Math.max(0.00000001,this.mag()))
+	},
+	"angle":function(){
+		return Math.atan2(this.y,this.x)
+	},
+	"rotate":function(a){
+		let c=Math.cos(a)
+		let s=Math.sin(a)
+		return new vec2(c*this.x-s*this.y,s*this.x+c*this.y)
 	}
 }

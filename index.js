@@ -2,6 +2,7 @@ cvs = document.createElement("canvas");
 width = cvs.width = window.innerWidth;
 height = cvs.height = window.innerHeight;
 var joys=[];
+var objs=[];
 joys.push(new joy(width*0.15,height*0.7,50))
 joys.push(new joy(width*0.8,height*0.7,50))
 window.onresize=function(e){
@@ -17,7 +18,6 @@ function handleJoystick(e){
 	for(let i=0;i<e.touches.length;i++){
 	touches.push(new vec2(e.touches[i].clientX,e.touches[i].clientY))
 	}
-	console.log(touches)
 	joys.forEach(x=>{
 		x.move(touches)
 	})
