@@ -13,7 +13,7 @@ function line(a,b){
 	ctx.stroke()
 }
 
-function fillPath(p){
+function strokePath(p){
 	ctx.beginPath()
 	ctx.moveTo(p[0].x,p[0].y)
 	for(let i=1;i<p.length;i++){

@@ -3,13 +3,13 @@ width = cvs.width = window.innerWidth;
 height = cvs.height = window.innerHeight;
 var joys=[];
 var objs=[];
-joys.push(new joy(width*0.15,height*0.7,50))
-joys.push(new joy(width*0.8,height*0.7,50))
+joys.push(new joy(width*0.15,height*0.7,Math.min(width,height)/6))
+joys.push(new joy(width*0.85,height*0.7,Math.min(width,height)/6))
 window.onresize=function(e){
 	width = cvs.width = window.innerWidth;
 	height = cvs.height = window.innerHeight;
-	joys[0].pos=new vec2(width*0.15,height*0.7)
-	joys[1].pos=new vec2(width*0.8,height*0.7)
+	joys[0]=new joy(width*0.15,height*0.7,Math.min(width,height)/6)
+	joys[1]=new joy(width*0.85,height*0.7,Math.min(width,height)/6)
 }
 ctx = cvs.getContext("2d");
 
