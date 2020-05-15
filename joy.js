@@ -14,7 +14,7 @@ joy.prototype={
 	},
 	"move":function(moves){
 		let win= -1;
-		let near=Math.Inf(1)
+		let near=1000;
 		let p=0;
 		moves.forEach(x =>{
 			dist=x.add(this.pos.neg()).mag()
