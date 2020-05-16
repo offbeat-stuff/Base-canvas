@@ -111,8 +111,10 @@ game={
 		drawShape(this.path,this.pos,this.angle)
 		
 		//Show it at edges
-		drawShape(this.path,this.pos.add(new vec2(width,height)),this.angle)
-		drawShape(this.path,this.pos.add(new vec2(-width, -height)),this.angle)
+		drawShape(this.path,this.pos.add(new vec2(width,0)),this.angle)
+		drawShape(this.path,this.pos.add(new vec2(-width,0)),this.angle)
+		drawShape(this.path,this.pos.add(new vec2(0,height)),this.angle)
+		drawShape(this.path,this.pos.add(new vec2(0,-height)),this.angle)
 		this.asteroids.forEach(x=>{
 			x.show()
 		})
