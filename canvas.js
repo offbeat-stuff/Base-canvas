@@ -2,6 +2,15 @@ function fill(f){
 	ctx.fillStyle=f
 }
 
+function drawShape(path,pos,r){
+	let a=[];
+	path.forEach(x=>{
+	let p=x.rotate(r)
+	a.push(p.add(pos))
+	})
+	strokePath(a)
+}
+
 function stroke(s){
 	ctx.strokeStyle=s
 }

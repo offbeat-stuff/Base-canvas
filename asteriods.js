@@ -108,12 +108,11 @@ game={
 	},
 	"show":function(){
 		stroke("#fff")
-		let a=[];
-		this.path.forEach(x=>{
-			let p=x.rotate(this.angle)
-			a.push(p.add(this.pos))
-		})
-		strokePath(a)
+		drawShape(this.path,this.pos,this.angle)
+		
+		//Show it at edges
+		drawShape(this.path,this.pos.add(new vec2(width,height)),this.angle)
+		drawShape(this.path,this.pos.add(new vec2(-width, -height)),this.angle)
 		this.asteroids.forEach(x=>{
 			x.show()
 		})
