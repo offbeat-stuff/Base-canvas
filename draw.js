@@ -20,6 +20,6 @@ function draw() {
     fill(16, 16, 16);
     rect(0, 0, width / 4, height / 9);
     fill(200, 200, 200);
-    ctx.fillText("|> Made by Rudraksh", 5, 30);
+    ctx.fillText("|> Made by Ayush Saroha", 5, 30);
     requestAnimationFrame(draw);
 }
